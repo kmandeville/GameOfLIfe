@@ -1,0 +1,38 @@
+//file:noinspection GroovySillyAssignment
+plugins {
+    id 'java'
+    id 'application'
+}
+
+group = 'org.example'
+version = '1.0-SNAPSHOT'
+mainClassName = 'me.kevinmandeville.Main' // Set your main class here
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.junit.jupiter:junit-jupiter:5.8.2'
+}
+
+application {
+    mainClassName = mainClassName // Set your main class here as well
+}
+
+sourceCompatibility = JavaVersion.VERSION_17
+targetCompatibility = JavaVersion.VERSION_17
+
+// Define the tasks to build and assemble the executable JAR
+jar {
+    duplicatesStrategy(DuplicatesStrategy.EXCLUDE)
+    manifest {
+        attributes 'Main-Class': mainClassName
+    }
+
+    from configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
+}
+
+test {
+    useJUnitPlatform()
+}
