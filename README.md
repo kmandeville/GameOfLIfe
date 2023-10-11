@@ -12,4 +12,4 @@ On Mac: *./gradlew clean build*
 On Windows: *gradlew.bat clean build*  (I think - I work only on Mac)
 
 # To run after building:
-java -jar build/libs/GameOfLife-1.0-SNAPSHOT.jar
+*java -jar build/libs/GameOfLife-1.0-SNAPSHOT.jar*
